@@ -1,3 +1,6 @@
+// parte 1
+package com.example.actividad_2_3_3.model
+
 // Modelo principal que representa el estado del formulario del usuario
 data class UsuarioUiState(
     val nombre: String = "",            //Nombre del Usuario
