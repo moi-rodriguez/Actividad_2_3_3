@@ -1,5 +1,5 @@
 package com.example.actividad_2_3_3
-//holi
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
