@@ -1,15 +1,3 @@
-// Modelo que almacena posibles errores individuales del formulario
-
-data class UsuarioErrores(
-    val nombre: String? = null,
-    val correo: String? = null,
-    val clave: String? = null,
-    val direccion: String? = null,
-)
-
-
-
-
 // Modelo principal que representa el estado del formulario del usuario
 data class UsuarioUiState(
     val nombre: String = "",            //Nombre del Usuario
@@ -20,3 +8,11 @@ data class UsuarioUiState(
     val errores: UsuarioErrores = UsuarioErrores() //Objeto que contiene los errores por campo
 )
 
+// Modelo que almacena posibles errores individuales del formulario
+
+data class UsuarioErrores(
+    val nombre: String? = null,
+    val correo: String? = null,
+    val clave: String? = null,
+    val direccion: String? = null,
+)
