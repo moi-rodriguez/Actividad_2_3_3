@@ -1,3 +1,4 @@
+// Parte 3 - Pantalla de Registro
 package com.example.actividad_2_3_3.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
@@ -18,12 +19,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.ejemplo3.viewmodel.UsuarioViewModel
+import com.example.actividad_2_3_3.viewmodel.UsuarioViewModel
 
 @Composable
 fun RegistroScreen(
@@ -32,21 +31,21 @@ fun RegistroScreen(
 ) {
     val estado by viewModel.estado.collectAsState()
 
-    column(
+    Column(
         Modifier
             .fillMaxSize()
-            .padding(all = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(space = 12.dp)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ){
         // Campo nombre
         OutlinedTextField(
             value = estado.nombre,
             onValueChange = viewModel::onNombreChange,
-            label = { Text(text = "Nombre")},
+            label = { Text("Nombre")},
             isError = estado.errores.nombre != null,
             supportingText = {
                 estado.errores.nombre?.let {
-                    Text(text= it, color = MaterialTheme.colorScheme.error)
+                    Text(it, color = MaterialTheme.colorScheme.error)
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -56,11 +55,11 @@ fun RegistroScreen(
         OutlinedTextField(
             value = estado.correo,
             onValueChange = viewModel::onCorreoChange,
-            label = { Text(text = "Correo electrónico")},
+            label = { Text("Correo electrónico")},
             isError = estado.errores.correo != null,
             supportingText = {
                 estado.errores.correo?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
+                    Text( it, color = MaterialTheme.colorScheme.error)
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -70,12 +69,12 @@ fun RegistroScreen(
         OutlinedTextField(
             value = estado.clave,
             onValueChange = viewModel::onClaveChange,
-            label = { Text(text = "Contraseña") },
+            label = { Text("Contraseña") },
             visualTransformation = PasswordVisualTransformation(),
             isError = estado.errores.clave != null,
             supportingText = {
                 estado.errores.clave?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
+                    Text(it, color = MaterialTheme.colorScheme.error)
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -85,11 +84,11 @@ fun RegistroScreen(
         OutlinedTextField(
             value = estado.direccion,
             onValueChange = viewModel::onDireccionChange,
-            label = { Text(text = "Dirección") },
-            isError = estado.errores.direcion != null,
+            label = { Text("Dirección") },
+            isError = estado.errores.direccion != null,
             supportingText = {
                 estado.errores.direccion?.let {
-                    Text( text = it, color = MaterialTheme.colorScheme.error)
+                    Text(it, color = MaterialTheme.colorScheme.error)
                 }
             },
         )
@@ -100,21 +99,21 @@ fun RegistroScreen(
                 checked = estado.aceptaTerminos,
                 onCheckedChange = viewModel::onAceptarTerminosChange
             )
-            Spacer(Modifier.width(width = 8.dp))
-            Text( text = "Acepto los términos y condiciones")
+            Spacer(Modifier.width(8.dp))
+            Text("Acepto los términos y condiciones")
         }
     }
 
     // Botón: enviar
     Button(
         onClick = {
-            if (ViewModel.validarFormulario()) {
-                navController.navigate(route = "resumen")
+            if (viewModel.validarFormulario()) {
+                navController.navigate("resumen")
 
             }
         },
         modifier = Modifier.fillMaxWidth()
     ){
-        Text( text = "Registrar")
+        Text("Registrar")
     }
 }

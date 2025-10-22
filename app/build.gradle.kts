@@ -40,7 +40,7 @@ android {
 }
 
 dependencies { // parte 1
-    implementation("androidx.navegation:navegation-compose:2.7.7")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-rc02")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")

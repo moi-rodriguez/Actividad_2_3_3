@@ -20,7 +20,7 @@ class UsuarioViewModel : ViewModel() {
     val estado: StateFlow<UsuarioUiState> = _estado
 
     // Actualiza el campo nombre y limpia su error
-    fun OnNombreChange(valor: String) {
+    fun onNombreChange(valor: String) {
         _estado.update { it.copy(nombre = valor, errores = it.errores.copy(nombre = null)) }
     }
 
